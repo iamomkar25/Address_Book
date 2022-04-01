@@ -171,6 +171,41 @@ namespace Address_Book
                     break;
             }
         }
+
+        //UC4
+
+        
+        public void RemovePerson()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove:");
+            string firstname = Console.ReadLine();
+            Contact findperson = People.FirstOrDefault(x => x.firstname.ToLower() == firstname.ToLower());
+            if (findperson == null)
+            {
+                Console.WriteLine("That person could not be found");
+            }
+            else
+            {
+                Console.WriteLine("Person with the Given name exists");
+                Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
+                PrintDetails(findperson);
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                {
+
+                    People.Remove(findperson);
+                    Console.WriteLine("Person removed. Press any key to continue.");
+                    Console.ReadKey();
+                    return;
+                }
+                ListAllContacts();
+                if (Console.ReadKey().Key == ConsoleKey.N)
+                {
+                    Console.WriteLine("OKK. Press any key to continue.");
+                }
+            }
+        }
+
+
         public void ChooseOption()
         {
             Console.WriteLine("\n****************\nPlease Choose Any Option And Add The Details\n****************\n");
