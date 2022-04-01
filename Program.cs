@@ -10,6 +10,10 @@ namespace Address_Book
     {
         static void Main(string[] args)
         {
+            AddressBookSystem addressBook = new AddressBookSystem();
+
+           
+            addressBook.ChooseOption();
         }
     }
 }
