@@ -280,5 +280,78 @@ namespace Address_Book
                 }
             }
         }
+
+        public void AddMultiplePerson_With_UniqueAddress()
+        {
+            Console.Write("How many contacts u want to add :");
+            int num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= num; i++)
+            {
+                while (i <= num)
+                {
+                    for (int j = 0; j < num; j++)
+                    {
+                        Console.Write("Enter the First Name: ");
+                        string fname = Console.ReadLine();
+                        if (People[j].firstname.Equals(fname))
+                        {
+                            Console.WriteLine("Name already exists\n");
+                            Console.ReadKey();
+                            Console.WriteLine("\nEnter a New name and Add the details");
+                            ContactDetails();
+                            ListAllContacts();
+                        }
+                        else
+                        {
+                            ContactDetails();
+                            ListAllContacts();
+                        }
+                    }
+                    i++;
+                    break;
+                }
+            }
+        }
+        /// Choose options for adding the details in a address book
+        public void ChooseOption()
+        {
+            Console.WriteLine("\n****************\nPlease Choose Any Option And Add The Details\n****************\n");
+            bool exit = false;
+            while (exit != true)
+            {
+                Console.WriteLine("Choose a number: " + "\n1 :Create Contact\n" + "2 :List All People Present in the List\n" + "3 :Edit Existing Contact\n" + "4 :Removing Contact\n" + "5 :Adding Multiple Contact\n" + "6 :Adding Multiple Unique Contact\n" + "7 :Exit From the Address Book\n");
+                int options = Convert.ToInt32(Console.ReadLine());
+                switch (options)
+                {
+                    case 1:
+                        ContactDetails();
+                        break;
+                    case 2:
+                        ListAllContacts();
+                        break;
+                    case 3:
+                        ListAllContacts();
+                        UpdateExistingContact();
+                        break;
+                    case 4:
+                        RemovePerson();
+                        break;
+                    case 5:
+                        AddMultipleContact();
+                        break;
+                    case 6:
+                        ContactDetails();
+                        AddMultiplePerson_With_UniqueAddress();
+                        break;
+                    case 7:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Choose Valid Option!!");
+                        break;
+                }
+            }
+
+        }
     }
 }
