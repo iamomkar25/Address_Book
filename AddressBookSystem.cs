@@ -92,7 +92,7 @@ namespace Address_Book
                 case "1":
                     Console.WriteLine("Enter the First Name of the Person U want to update");
                     string firstname = Console.ReadLine();
-                    Contacts person = People.Find(x => x.firstname.ToLower() == firstname.ToLower());
+                    Contact person = People.Find(x => x.firstname.ToLower() == firstname.ToLower());
                     if (person == null)
                     {
                         Console.WriteLine("That person U entered is not found");
@@ -223,6 +223,55 @@ namespace Address_Book
                         ListAllContacts();
                         break;
                     case 3:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Choose Valid Option!!");
+                        break;
+                }
+            }
+        }
+
+        /// UC5 ==> adding multiple contacts to the list
+        public void AddMultipleContact()
+        {
+            Console.Write("How many contacts want to add :");
+            int num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= num; i++)
+            {
+                ContactDetails();
+                ListAllContacts();
+                i--;
+            }
+        }
+        /// Choose options for adding the details in a address book
+        public void ChooseOption()
+        {
+            Console.WriteLine("\n****************\nPlease Choose Any Option And Add The Details\n****************\n");
+            bool exit = false;
+            while (exit != true)
+            {
+                Console.WriteLine("Choose a number: " + "\n1 :Create Contact\n" + "2 :List All People Present in the List\n" + "3 :Edit Existing Contact\n" + "4 :Removing Contact\n" + "5 :Adding Multiple Contact\n" + "6 :Exit From the Address Book\n");
+                int options = Convert.ToInt32(Console.ReadLine());
+                switch (options)
+                {
+                    case 1:
+                        ContactDetails();
+                        break;
+                    case 2:
+                        ListAllContacts();
+                        break;
+                    case 3:
+                        ListAllContacts();
+                        UpdateExistingContact();
+                        break;
+                    case 4:
+                        RemovePerson();
+                        break;
+                    case 5:
+                        AddMultipleContact();
+                        break;
+                    case 6:
                         exit = true;
                         break;
                     default:
